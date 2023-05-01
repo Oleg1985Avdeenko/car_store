@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>clientOrder</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<h2>Order</h2>
+<h3>Sum order <b th:text="${clientOrder.sum}">1000</b> </h3>
+
+<table border="1" align="center">
+    <tr>
+        <td>Model</td>
+        <td>Amount</td>
+        <td>Price</td>
+        <td>Sum</td>
+        <td></td>
+    </tr>
+    <tr th:each="detail : ${clientOrder.orderDetails}">
+        <td th:text="${detail.model}"></td>
+        <td th:text="${detail.amount}"></td>
+        <td th:text="${detail.price}"></td>
+        <td th:text="${detail.sum}"></td>
+        <td><a href="#">Remove</a> </td>
+    </tr>
+</table>
+
+</body>
+</html>

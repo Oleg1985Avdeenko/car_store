@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User list</title>
+</head>
+<body>
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+
+<table border="1">
+    <tr>
+        <td>Login</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Cell phone</td>
+        <td>Email</td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.login}">Testlogin</td>
+        <td th:text="${user.name}">Testname</td>
+        <td th:text="${user.surname}">Testsurname</td>
+        <td th:text="${user.cellPhone}">Testcellphone</td>
+        <td th:text="${user.email}">Testemail</td>
+    </tr>
+</table>
+<a th:href="@{/users/new}">Add new</a>
+</body>
+</html>
