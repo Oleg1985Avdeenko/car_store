@@ -7,7 +7,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,17 +26,17 @@ public class ClientOrder {
     @Column
     private Integer id;
 
-    @CreationTimestamp
-    private LocalDateTime timeOfCreation;
-
-    @UpdateTimestamp
-    private LocalDateTime timeOfUpdate;
-
-    @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+//    @CreationTimestamp
+//    private LocalDateTime timeOfCreation;
+//
+//    @UpdateTimestamp
+//    private LocalDateTime timeOfUpdate;
+//
+//    @Enumerated(EnumType.STRING)
+//    private OrderStatus status;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private Set<Car> selectedCars = new HashSet<>();
+    private List<Car> selectedCars = new ArrayList<>();
 
 
     @OneToOne

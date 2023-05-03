@@ -14,7 +14,7 @@ public interface CarMapper {
 
     Car toCarEntity(CarDto carDto);
 
-    @InheritInverseConfiguration
+   // @InheritInverseConfiguration
     CarDto fromCarEntity(Car car);
 
     List<Car> toCarEntityList(List<CarDto> carDtoList);

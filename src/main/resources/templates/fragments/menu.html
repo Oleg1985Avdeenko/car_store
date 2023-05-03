@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">-->
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!--<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">-->
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -23,7 +23,7 @@
     <div sec:authorize="isAuthenticated()">
 
         <div>
-           Hello, <a th:href="@{/users/profile}"><span sec:authentication="principal.login"></span></a>
+           Hello, <a th:href="@{/users/profile}"></a>
         </div>
         <div>
             <a th:href="@{/users/new}">Authorization</a>
@@ -33,11 +33,11 @@
         </div>
     </div>
 
-    <div sec:authorize="!isAuthenticated()">
+<!--    <div sec:authorize="!isAuthenticated()">
         <div>
             Hello, Unknown, Please <a th:href="@{/login}">Login</a>
         </div>
-    </div>
+    </div>-->
     </td>
     </tr>
 </table>

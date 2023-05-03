@@ -13,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
 public class EngineDto {
 
     private Double volume;

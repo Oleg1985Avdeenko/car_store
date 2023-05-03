@@ -12,9 +12,9 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
 public class CarDto {
 
+    private Integer id;
     private BigDecimal price;
 
     private Boolean availability;

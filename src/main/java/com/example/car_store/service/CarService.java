@@ -10,4 +10,8 @@ public interface CarService {
     List<CarDto> getAll();
 
     void addToOrder(Integer carId, String login);
+
+    boolean save(CarDto carDto);
+
+
 }

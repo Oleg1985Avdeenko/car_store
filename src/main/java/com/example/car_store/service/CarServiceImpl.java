@@ -2,16 +2,20 @@ package com.example.car_store.service;
 
 import com.example.car_store.dao.CarRepository;
 import com.example.car_store.dao.UserRepository;
+import com.example.car_store.entity.cars.Car;
 import com.example.car_store.entity.users.ClientOrder;
+import com.example.car_store.entity.users.Role;
 import com.example.car_store.entity.users.User;
 import com.example.car_store.mapper.CarMapper;
 import com.example.car_store.service.dto.CarDto;
+import com.example.car_store.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,14 +29,11 @@ public class CarServiceImpl implements CarService {
     private final OrderService orderService;
 
 
-
     @Override
     public List<CarDto> getAll() {
         return carRepository.findAll().stream()
                 .map(mapper::fromCarEntity)
                 .collect(Collectors.toList());
-        //  List<CarDto> list = mapper.fromCarEntityList(all);
-        // return list;
     }
 
     @Override
@@ -49,9 +50,25 @@ public class CarServiceImpl implements CarService {
             userRepository.save(user);
         } else {
             orderService.addCar(order, Collections.singletonList(carId));
+            //
+            carRepository.deleteById(carId);
+            getAll();
+            //
         }
 
     }
 
-
+    @Override
+    public boolean save(CarDto carDto) {
+        Car car = Car.builder()
+                .model(carDto.getModel())
+                .price(carDto.getPrice())
+                .availability(carDto.getAvailability())
+                .build();
+        carRepository.save(car);
+        return true;
+    }
 }
+
+
+

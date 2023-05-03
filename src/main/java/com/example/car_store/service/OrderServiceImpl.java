@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
         ClientOrder clientOrder = new ClientOrder();
         clientOrder.setUser(user);
         List<Car> carList = getCollectCarById(carIdList);
-        clientOrder.setSelectedCars((Set<Car>) carList);
+        clientOrder.setSelectedCars(carList);
         return orderRepository.save(clientOrder);
     }
 
@@ -45,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
         List<Car> carList = (List<Car>) order.getSelectedCars();
         List<Car> newCarList = carList == null ? new ArrayList<>() : new ArrayList<>(carList);
         newCarList.addAll(getCollectCarById(carIdList));
-        order.setSelectedCars((Set<Car>) newCarList);
+        order.setSelectedCars(newCarList);
         orderRepository.save(order);
     }
 

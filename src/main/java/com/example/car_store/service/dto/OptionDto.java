@@ -13,7 +13,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
 public class OptionDto {
 
     private String optionName;

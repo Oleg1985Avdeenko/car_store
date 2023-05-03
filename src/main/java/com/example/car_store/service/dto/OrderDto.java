@@ -15,7 +15,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table
 public class OrderDto {
 
     private Integer amountCars;

@@ -3,25 +3,27 @@
 <!--<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">-->
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>Add car</title>
 </head>
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
-<p th:if="${loginError}" class="error">Wrong login or password</p>
-
-<form th:action="@{/auth}" method="post">
+<form th:action="@{/cars/new}" th:object="${car}" method="post">
     <table border="1">
         <tr>
-            <td>Login</td>
-            <td><input type="text" name="login"></td>
+            <td>Model</td>
+            <td><input type="text" th:field="*{model}"></td>
         </tr>
         <tr>
-            <td>Password</td>
-            <td><input type="password" name="password"></td>
+            <td>Price</td>
+            <td><input type="text" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td>Availability</td>
+            <td><input type="text" th:field="*{availability}"></td>
         </tr>
     </table>
-    <button type="submit">Log in</button>
+    <button type="submit">Save</button>
 </form>
 
 </body>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">-->
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!--<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">-->
 <head>
     <meta charset="UTF-8">
     <title>Cars</title>
@@ -20,10 +20,10 @@
         <td th:text="${car.model}">CoolRay</td>
         <td th:text="${car.price}">12.0</td>
         <td th:text="${car.availability}">true</td>
-<!--           <td><a th:href="@{/cars/{id}/clientOrder(id=${car.id})}">Add to order</a></td>-->
+           <td><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Add to order</a></td>
 
     </tr>
 </table>
-
+<a th:href="@{/cars/new}">Add new</a>
 </body>
 </html>

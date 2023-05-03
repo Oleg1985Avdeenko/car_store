@@ -12,14 +12,14 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping("/login")
+/*    @RequestMapping("/login")
     public String login(){
         return "login";
-    }
+    }*/
 
-    @RequestMapping("/login-error") // Чтобы пользователь попад на 404-page
+/*    @RequestMapping("/login-error") // Чтобы пользователь попад на 404-page
     public String loginError(Model model){
         model.addAttribute("loginError", true);
         return "login";
-    }
+    }*/
 }
