@@ -22,6 +22,21 @@
             <td>Availability</td>
             <td><input type="text" th:field="*{availability}"></td>
         </tr>
+        <tr>
+            <td>Transmission</td>
+            <td><input type="text" th:field="*{car.carTransmission.type}"></td>
+        </tr>
+        <tr>
+            <td>Engine volume</td>
+            <td><input type="text" th:field="*{car.carEngine.setVolume}"></td>
+        </tr>
+        <tr>
+            <td>Engine type</td>
+            <td><input type="text" th:field="*{car.carEngine.seType}"></td>
+        </tr>
+        <td>Color</td>
+        <td><input type="text" th:field="*{car.carColor.colorName}"></td>
+        </tr>
     </table>
     <button type="submit">Save</button>
 </form>

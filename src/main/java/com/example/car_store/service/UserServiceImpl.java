@@ -28,7 +28,6 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;//__________
 
 
-
     @Override
     public boolean save(UserDto userDto) {
         if (!Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())) {
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getAll() {
         return userRepository.findAll().stream()
-                .map(mapper :: mapToDto)
+                .map(mapper::mapToDto)
                 .collect(Collectors.toList());
     }
 

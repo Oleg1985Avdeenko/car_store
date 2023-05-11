@@ -4,7 +4,6 @@ import com.example.car_store.entity.users.User;
 import com.example.car_store.service.UserService;
 import com.example.car_store.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,18 +22,19 @@ public class UserController {
 
 
     @GetMapping
-    public String userList(Model model){
+    public String userList(Model model) {
         model.addAttribute("users", userService.getAll());
         return "userList";
     }
+
     @GetMapping("/new")
-    public String newUser(Model model){
+    public String newUser(Model model) {
         model.addAttribute("user", new UserDto());
         return "user";
     }
 
     @PostMapping("/new")
-    public String saveUser(UserDto userDto, Model model){
+    public String saveUser(UserDto userDto, Model model) {
         if (userService.save(userDto)) {
             return "redirect:/users";
         } else {
@@ -44,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profileUser(Model model, Principal principal){
-        if (principal == null){
+    public String profileUser(Model model, Principal principal) {
+        if (principal == null) {
             throw new RuntimeException("You are not authorize");
         }
         User user = userService.findByLogin(principal.getName());
@@ -61,8 +61,8 @@ public class UserController {
     }
 
     @PostMapping("/profile")
-    public String updateProfileUser(UserDto userDto, Model model, Principal principal){
-        if (principal == null || !Objects.equals(principal.getName(), userDto.getLogin())){
+    public String updateProfileUser(UserDto userDto, Model model, Principal principal) {
+        if (principal == null || !Objects.equals(principal.getName(), userDto.getLogin())) {
             throw new RuntimeException("You are not authorize");
         }
         if ((userDto.getPassword() != null)

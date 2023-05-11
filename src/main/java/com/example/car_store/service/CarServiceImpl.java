@@ -23,7 +23,6 @@ public class CarServiceImpl implements CarService {
     private final CarRepository carRepository;
     private final UserRepository userRepository;
 
-   // private final TransmissionRepository transmissionRepository;
     private final OrderService orderService;
 
 

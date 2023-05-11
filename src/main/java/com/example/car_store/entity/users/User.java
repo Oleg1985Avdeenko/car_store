@@ -1,7 +1,8 @@
 package com.example.car_store.entity.users;
 
-import javax.persistence.*;
 import lombok.*;
+
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor

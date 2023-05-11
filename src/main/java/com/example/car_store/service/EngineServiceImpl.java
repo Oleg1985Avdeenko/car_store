@@ -7,11 +7,9 @@ import com.example.car_store.service.dto.EngineDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
-public class EngineServiceImpl implements EngineService{
+public class EngineServiceImpl implements EngineService {
 
     private final EngineRepository engineRepository;
     private final EngineMapper mapper;
@@ -21,7 +19,6 @@ public class EngineServiceImpl implements EngineService{
         Engine engine = engineRepository.getById(id);
         return mapper.toEngineDto(engine);
     }
-
 
 
 }

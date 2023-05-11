@@ -1,9 +1,9 @@
 package com.example.car_store.entity.cars;
 
 import com.example.car_store.entity.users.ClientOrder;
-import javax.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Data

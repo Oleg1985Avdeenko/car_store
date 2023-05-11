@@ -8,13 +8,17 @@
 <body>
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 <h2>Order</h2>
-<h3>Sum order <b th:text="${clientOrder.sum}">1000</b> </h3>
+<h3>Sum order <b th:text="${clientOrder.sum}">1000</b></h3>
 
 <table border="1" align="center">
     <tr>
         <td>Model</td>
         <td>Amount</td>
         <td>Price</td>
+        <td>Transmission</td>
+        <td>Engine volume</td>
+        <td>Engine type</td>
+        <td>Color</td>
         <td>Sum</td>
         <td></td>
     </tr>
@@ -22,9 +26,13 @@
         <td th:text="${detail.model}"></td>
         <td th:text="${detail.amount}"></td>
         <td th:text="${detail.price}"></td>
+        <td th:text="${detail.carTransmission.type}"></td>
+        <td th:text="${detail.carEngine.getVolume}"></td>
+        <td th:text="${detail.carEngine.getType}"></td>
+        <td th:text="${detail.carColor.colorName}"></td>
         <td th:text="${detail.sum}"></td>
-        <td><a href="#">Remove</a> </td>
-<!--        <td><a th:href="@{'/clientOrder.orderDetails/{id}/clientOrder' (id=${car.id})}">Remove</a></td>-->
+        <td><a href="#">Remove</a></td>
+        <!--        <td><a th:href="@{'/clientOrder.orderDetails/{id}/clientOrder' (id=${car.id})}">Remove</a></td>-->
     </tr>
 </table>
 

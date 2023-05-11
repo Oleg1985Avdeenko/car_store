@@ -9,38 +9,38 @@
 <table id="nav-menu" width="100%">
     <tr>
         <td align="center">
-    <table>
-        <tr>
-            <td>Menu-</td>
-            <td><a th:href="@{/}">Home</a></td>
-            <td><a th:href="@{/cars}">Cars</a></td>
-            <td sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"> <a th:href="@{/users}">Users</a></td>
-            <td sec:authorize="isAuthenticated()"> <a th:href="@{/clientOrder}">Order</a></td>
-            <td sec:authorize="!isAuthenticated()">Hello, Please <a th:href="@{/login}">Login</a></td>
-            <td sec:authorize="!isAuthenticated()"><a th:href="@{/users/new}">Authorization</a></td>
-        </tr>
-    </table>
+            <table>
+                <tr>
+                    <td>Menu-</td>
+                    <td><a th:href="@{/}">Home</a></td>
+                    <td><a th:href="@{/cars}">Cars</a></td>
+                    <td sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"><a th:href="@{/users}">Users</a></td>
+                    <td sec:authorize="isAuthenticated()"><a th:href="@{/clientOrder}">Order</a></td>
+                    <td sec:authorize="!isAuthenticated()">Hello, Please <a th:href="@{/login}">Login</a></td>
+                    <td sec:authorize="!isAuthenticated()"><a th:href="@{/users/new}">Authorization</a></td>
+                </tr>
+            </table>
         </td>
-    <td align="right">
-    <div sec:authorize="isAuthenticated()">
+        <td align="right">
+            <div sec:authorize="isAuthenticated()">
 
-        <div>
-           Hello, <a th:href="@{/users/profile}"></a>
-        </div>
-        <div>
-            <a th:href="@{/users/profile}">Profile</a>
-        </div>
-        <div>
-            <a th:href="@{/logout}">Logout</a>
-        </div>
-    </div>
+                <div>
+                    Hello, <a th:href="@{/users/profile}"></a>
+                </div>
+                <div>
+                    <a th:href="@{/users/profile}">Profile</a>
+                </div>
+                <div>
+                    <a th:href="@{/logout}">Logout</a>
+                </div>
+            </div>
 
-<!--    <div sec:authorize="!isAuthenticated()">
-        <div>
-            Hello, Unknown, Please <a th:href="@{/login}">Login</a>
-        </div>
-    </div>-->
-    </td>
+            <!--    <div sec:authorize="!isAuthenticated()">
+                    <div>
+                        Hello, Unknown, Please <a th:href="@{/login}">Login</a>
+                    </div>
+                </div>-->
+        </td>
     </tr>
 </table>
 

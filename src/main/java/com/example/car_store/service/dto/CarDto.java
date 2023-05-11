@@ -1,7 +1,5 @@
 package com.example.car_store.service.dto;
 
-import javax.persistence.Table;
-
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -20,13 +18,13 @@ public class CarDto {
 
     private String model;
 
-//    private OrderDto dtoSelectedCar;
-//
-      private EngineDto carEngine;
-//
+    //    private OrderDto dtoSelectedCar;
+
+    private EngineDto carEngine;
+
     private ColorDto carColor;
-//
-   private TransmissionDto carTransmission;
-//
+
+    private TransmissionDto carTransmission;
+
 //    private OptionDto carOption;
 }

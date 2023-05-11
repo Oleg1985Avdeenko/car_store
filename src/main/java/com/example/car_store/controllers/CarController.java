@@ -31,18 +31,18 @@ public class CarController {
     @GetMapping
     public String list(Model model) {
         List<CarDto> list = carService.getAll();
-       List<ClientOrder> clientOrders = orderRepository.findAll();
-       for (ClientOrder order : clientOrders){
-          List<Car> carList = order.getSelectedCars();
-         list.removeAll(carList.stream().map(mapper1::toCarDto).collect(Collectors.toList()));
-       }
+        List<ClientOrder> clientOrders = orderRepository.findAll();
+        for (ClientOrder order : clientOrders) {
+            List<Car> carList = order.getSelectedCars();
+            list.removeAll(carList.stream().map(mapper1::toCarDto).collect(Collectors.toList()));
+        }
         model.addAttribute("cars", list);
         return "cars";
     }
 
     @GetMapping("/{id}/clientOrder")
     public String addOrder(@PathVariable Integer id, Principal principal) {
-        if(principal == null) {
+        if (principal == null) {
             return "redirect:/cars";
         }
         carService.addToOrder(id, principal.getName());
@@ -50,13 +50,13 @@ public class CarController {
     }
 
     @GetMapping("/new")
-    public String newCar(Model model){
+    public String newCar(Model model) {
         model.addAttribute("car", new CarDto());
         return "car";
     }
 
     @PostMapping("/new")
-    public String saveCar(CarDto carDto, Model model){
+    public String saveCar(CarDto carDto, Model model) {
         if (carService.save(carDto)) {
             return "redirect:/cars";
         } else {

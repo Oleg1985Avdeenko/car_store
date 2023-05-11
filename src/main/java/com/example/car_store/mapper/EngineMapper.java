@@ -4,26 +4,24 @@ import com.example.car_store.entity.cars.Engine;
 import com.example.car_store.service.dto.EngineDto;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class EngineMapper {
 
     public Engine toEngineEntity(EngineDto engineDto) {
-        if ( engineDto == null ) {
+        if (engineDto == null) {
             return null;
         }
 
         Engine.EngineBuilder engine = Engine.builder();
 
-        engine.type( engineDto.getType() );
-        engine.volume( engineDto.getVolume() );
+        engine.type(engineDto.getType());
+        engine.volume(engineDto.getVolume());
 
         return engine.build();
     }
 
     public EngineDto toEngineDto(Engine engine) {
-        if ( engine == null ) {
+        if (engine == null) {
             return null;
         }
 

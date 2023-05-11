@@ -1,8 +1,8 @@
 package com.example.car_store.entity.cars;
 
-import javax.persistence.*;
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 

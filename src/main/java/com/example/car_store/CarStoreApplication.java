@@ -1,11 +1,8 @@
 package com.example.car_store;
 
-import com.example.car_store.dao.CarRepository;
 import com.example.car_store.service.CarService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 public class CarStoreApplication {

@@ -3,7 +3,6 @@ package com.example.car_store.service;
 
 import com.example.car_store.service.dto.CarDto;
 
-
 import java.util.List;
 
 public interface CarService {
@@ -13,8 +12,6 @@ public interface CarService {
     void addToOrder(Integer carId, String login);
 
     boolean save(CarDto carDto);
-
-
 
 
 }
