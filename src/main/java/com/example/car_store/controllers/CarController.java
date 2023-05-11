@@ -1,10 +1,12 @@
 package com.example.car_store.controllers;
 
+import com.example.car_store.dao.OrderRepository;
+import com.example.car_store.entity.cars.Car;
+import com.example.car_store.entity.users.ClientOrder;
+import com.example.car_store.mapper.CarMapper;
 import com.example.car_store.service.CarService;
 import com.example.car_store.service.dto.CarDto;
-import com.example.car_store.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Controller
@@ -21,10 +24,18 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
+    private final CarMapper mapper1;
+    private final OrderRepository orderRepository;
+
 
     @GetMapping
     public String list(Model model) {
         List<CarDto> list = carService.getAll();
+       List<ClientOrder> clientOrders = orderRepository.findAll();
+       for (ClientOrder order : clientOrders){
+          List<Car> carList = order.getSelectedCars();
+         list.removeAll(carList.stream().map(mapper1::toCarDto).collect(Collectors.toList()));
+       }
         model.addAttribute("cars", list);
         return "cars";
     }

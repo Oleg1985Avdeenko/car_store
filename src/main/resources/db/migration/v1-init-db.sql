@@ -1,3 +1,4 @@
+use car_store12
 drop table if exists car;
 drop table if exists car_seq;
 drop table if exists client_order;

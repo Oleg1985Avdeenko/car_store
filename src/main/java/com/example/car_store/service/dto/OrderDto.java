@@ -1,6 +1,7 @@
 package com.example.car_store.service.dto;
 
 import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,16 +18,17 @@ import java.util.Set;
 @Builder
 public class OrderDto {
 
+    private Integer id;
     private Integer amountCars;
     private double sum;
 
     private List<OrderDetailDto> orderDetails = new ArrayList<>();
 
-    public void aggregate(){
+    public void aggregate() {
         this.amountCars = orderDetails.size();
         this.sum = orderDetails.stream()
-                .map(OrderDetailDto :: getSum)
-                .mapToDouble(Double :: doubleValue)
+                .map(OrderDetailDto::getSum)
+                .mapToDouble(Double::doubleValue)
                 .sum();
     }
 }

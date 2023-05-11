@@ -1,13 +1,12 @@
 package com.example.car_store.service.dto;
 
 import javax.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import lombok.*;
 
 import java.math.BigDecimal;
 
+@ToString
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,11 +22,11 @@ public class CarDto {
 
 //    private OrderDto dtoSelectedCar;
 //
-//    private EngineDto carEngine;
+      private EngineDto carEngine;
 //
-//    private ColorDto carColor;
+    private ColorDto carColor;
 //
-//    private TransmissionDto carTransmission;
+   private TransmissionDto carTransmission;
 //
 //    private OptionDto carOption;
 }

@@ -19,5 +19,5 @@ public class EngineDto {
 
     private String type;
 
-    private Set<CarDto> selectedEngines = new HashSet<>();
+   // private Set<CarDto> selectedEngines = new HashSet<>();
 }

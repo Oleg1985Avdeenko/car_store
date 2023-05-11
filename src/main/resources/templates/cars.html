@@ -13,6 +13,8 @@
         <td>Model</td>
         <td>Price</td>
         <td>Availability</td>
+        <td>Transmission</td>
+        <td>Engine</td>
         <td></td>
     </tr>
     <tr th:each="car : ${cars}">
@@ -20,6 +22,8 @@
         <td th:text="${car.model}">CoolRay</td>
         <td th:text="${car.price}">12.0</td>
         <td th:text="${car.availability}">true</td>
+        <td th:text="${car.carTransmission}"></td>
+        <td th:text="${car.carEngine}"></td>
            <td><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Add to order</a></td>
 
     </tr>

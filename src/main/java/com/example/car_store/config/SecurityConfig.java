@@ -23,31 +23,27 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
-
-    private AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userService);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
+//    private final UserService userService;
+//
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(authenticationProvider());
+//    }
+//
+//    private AuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+//        auth.setUserDetailsService(userService);
+//        auth.setPasswordEncoder(passwordEncoder());
+//        return auth;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
 
-//                .antMatchers("/cart/**").hasAuthority("USER")
-//                .antMatchers("/admin/**", "/users", "/user").hasAuthority("ADMIN")
-//                .antMatchers("/login").permitAll()
-
                 .antMatchers("/users").hasAuthority(Role.ADMIN.name())
-                .antMatchers("/users/new").hasAuthority(Role.ADMIN.name())
+                .antMatchers("/users/new").permitAll()
                 .antMatchers("/*").permitAll()
                 .anyRequest().permitAll()
                 .and()
@@ -58,9 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .defaultSuccessUrl("/",true)
                 .and()
-                .logout()//.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login")//.deleteCookies("JSESSIONID")
-                //.invalidateHttpSession(true)
+                .logout()
+                .logoutSuccessUrl("/")
+
                 .and()
                 .csrf().disable();
     }

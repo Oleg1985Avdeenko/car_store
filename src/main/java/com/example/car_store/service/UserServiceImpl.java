@@ -1,8 +1,9 @@
 package com.example.car_store.service;
 
+
 import com.example.car_store.dao.UserRepository;
-import com.example.car_store.entity.users.Role;
 import com.example.car_store.entity.users.User;
+import com.example.car_store.mapper.UserMapper;
 import com.example.car_store.service.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,7 +23,9 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    //private final PasswordEncoder passwordEncoder;//__________
+    private final UserMapper mapper;
+
+    private final PasswordEncoder passwordEncoder;//__________
 
 
 
@@ -31,15 +34,7 @@ public class UserServiceImpl implements UserService {
         if (!Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())) {
             throw new RuntimeException("Password is not equals!");
         }
-        User user = User.builder()
-                .login(userDto.getLogin())
-                .password(userDto.getPassword())
-                .name(userDto.getName())
-                .surname(userDto.getSurname())
-                .cellPhone(userDto.getCellPhone())
-                .email(userDto.getEmail())
-                .role(Role.CLIENT)
-                .build();
+        User user = mapper.mapToEntity(userDto);
         userRepository.save(user);
         return true;
     }
@@ -47,7 +42,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getAll() {
         return userRepository.findAll().stream()
-                .map(this::toDto)
+                .map(mapper :: mapToDto)
                 .collect(Collectors.toList());
     }
 
@@ -66,16 +61,6 @@ public class UserServiceImpl implements UserService {
                 roles);
     }
 
-    private UserDto toDto(User user) {
-        return UserDto.builder()
-                .login(user.getLogin())
-                .name(user.getName())
-                .surname(user.getSurname())
-                .cellPhone(user.getCellPhone())
-                .email(user.getEmail())
-                .build();
-    }
-
 
     @Override
     public User findByLogin(String login) {
@@ -89,10 +74,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("User not found by login " + userDto.getLogin());
         }
         boolean isChanged = false;
-//        if (userDto.getPassword() != null && !userDto.getPassword().isEmpty()) {
-//            savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//            isChanged = true;
-//        }
+        if (userDto.getPassword() != null && !userDto.getPassword().isEmpty()) {
+            savedUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+            isChanged = true;
+        }
         if (!Objects.equals(userDto.getName(), savedUser.getName())) {
             savedUser.setName(userDto.getName());
             isChanged = true;

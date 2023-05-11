@@ -1,11 +1,11 @@
 INSERT INTO car (id, availability, model, price, color_id, engine_id, model_option_id, transmission_id, order_id)
-VALUES (1, true, 'CoolRay', 65875.00, 1, 1, 1, 1, null),
-       (2, true, 'CoolRay', 67875.00, 2, 1, 1, 2, null),
-       (3, true, 'Atlas', 75950.00, 2, 2, 3, 3, null),
-       (4, false, 'Atlas', 75950.00, 3, 2, 2, 2, null),
-       (5, false, 'Emgrand', 54200.00, 4, 3, 4, 1, null),
-       (6, true, 'Emgrand', 52600.00, 1, 3, 4, 2, null);
-;
+VALUES (12, true, 'CoolRay', 65875.00, 1, 1, 1, 1, null),
+       (13, true, 'CoolRay', 67875.00, 2, 1, 1, 2, null),
+       (14, true, 'Atlas', 75950.00, 2, 2, 3, 3, null),
+       (15, false, 'Atlas', 75950.00, 3, 2, 2, 2, null),
+       (16, false, 'Emgrand', 54200.00, 4, 3, 4, 1, null),
+       (17, true, 'Emgrand', 52600.00, 1, 3, 4, 2, null);
+
 
 INSERT INTO color (id, color_name)
 VALUES (1, 'white'),

@@ -16,6 +16,8 @@
             <td><a th:href="@{/cars}">Cars</a></td>
             <td sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER')"> <a th:href="@{/users}">Users</a></td>
             <td sec:authorize="isAuthenticated()"> <a th:href="@{/clientOrder}">Order</a></td>
+            <td sec:authorize="!isAuthenticated()">Hello, Please <a th:href="@{/login}">Login</a></td>
+            <td sec:authorize="!isAuthenticated()"><a th:href="@{/users/new}">Authorization</a></td>
         </tr>
     </table>
         </td>
@@ -26,7 +28,7 @@
            Hello, <a th:href="@{/users/profile}"></a>
         </div>
         <div>
-            <a th:href="@{/users/new}">Authorization</a>
+            <a th:href="@{/users/profile}">Profile</a>
         </div>
         <div>
             <a th:href="@{/logout}">Logout</a>
