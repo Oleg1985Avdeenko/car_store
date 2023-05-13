@@ -57,11 +57,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public boolean save(CarDto carDto) {
-        Car car = Car.builder()
-                .model(carDto.getModel())
-                .price(carDto.getPrice())
-                .availability(carDto.getAvailability())
-                .build();
+        Car car = mapper.toCarEntity(carDto);
+        System.out.println(car);
         carRepository.save(car);
         return true;
     }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -27,7 +28,7 @@ public class CarController {
     private final CarMapper mapper1;
     private final OrderRepository orderRepository;
 
-
+    private  Random random = new Random();
     @GetMapping
     public String list(Model model) {
         List<CarDto> list = carService.getAll();
@@ -51,7 +52,8 @@ public class CarController {
 
     @GetMapping("/new")
     public String newCar(Model model) {
-        model.addAttribute("car", new CarDto());
+        CarDto carDto = new CarDto();
+        model.addAttribute("car", carDto);
         return "car";
     }
 

@@ -16,14 +16,14 @@ import java.util.Set;
 public class Transmission {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private Integer id;
 
     @Column
     private String type;
 
-    @OneToMany(mappedBy = "carTransmission", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "carTransmission", cascade = CascadeType.ALL)
     private Set<Car> selectedTransmissions = new HashSet<>();
 
 }

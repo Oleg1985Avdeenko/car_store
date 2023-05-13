@@ -13,7 +13,6 @@ public class EngineMapper {
         }
 
         Engine.EngineBuilder engine = Engine.builder();
-
         engine.type(engineDto.getType());
         engine.volume(engineDto.getVolume());
 

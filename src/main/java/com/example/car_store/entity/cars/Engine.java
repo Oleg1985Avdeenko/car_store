@@ -16,7 +16,7 @@ import java.util.Set;
 public class Engine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private Integer id;
 
@@ -26,7 +26,7 @@ public class Engine {
     @Column
     private String type;
 
-    @OneToMany(mappedBy = "carEngine", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "carEngine", cascade = CascadeType.ALL)
     private Set<Car> selectedEngines = new HashSet<>();
 
 }

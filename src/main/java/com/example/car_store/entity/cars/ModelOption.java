@@ -16,7 +16,7 @@ import java.util.Set;
 public class ModelOption {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private Integer id;
 
@@ -38,7 +38,7 @@ public class ModelOption {
     @Column
     private Boolean fogLight;
 
-    @OneToMany(mappedBy = "carOption", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "carOption", cascade = CascadeType.ALL)
     private Set<Car> selectedOptions = new HashSet<>();
 
 }

@@ -13,29 +13,36 @@
         <tr>
             <td>Model</td>
             <td><input type="text" th:field="*{model}"></td>
+<!--            <td><input type="text" th:field="*{model}"></td>-->
         </tr>
         <tr>
             <td>Price</td>
             <td><input type="text" th:field="*{price}"></td>
+<!--            <td><input type="text" th:field="*{price}"></td>-->
         </tr>
         <tr>
             <td>Availability</td>
+<!--            <td><input type="text" th:field="*{availability}"></td>-->
             <td><input type="text" th:field="*{availability}"></td>
         </tr>
         <tr>
             <td>Transmission</td>
-            <td><input type="text" th:field="*{car.carTransmission.type}"></td>
+<!--            <td><input type="text" th:field="*{carTransmission.type}"></td>-->
+            <td><input type="text" th:field="*{carTransmission.type}"></td>
         </tr>
         <tr>
             <td>Engine volume</td>
-            <td><input type="text" th:field="*{car.carEngine.setVolume}"></td>
+<!--            <td><input type="text" th:field="*{carEngine.volume}"></td>-->
+            <td><input type="text" th:field="*{carEngine.volume}"></td>
         </tr>
         <tr>
             <td>Engine type</td>
-            <td><input type="text" th:field="*{car.carEngine.seType}"></td>
+<!--            <td><input type="text" th:field="*{carEngine.type}"></td>-->
+            <td><input type="text" th:field="*{carEngine.type}"></td>
         </tr>
         <td>Color</td>
-        <td><input type="text" th:field="*{car.carColor.colorName}"></td>
+<!--        <td><input type="text" th:field="*{carColor.colorName}"></td>-->
+        <td><input type="text" th:field="*{carColor.colorName}"></td>
         </tr>
     </table>
     <button type="submit">Save</button>

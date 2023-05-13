@@ -2,6 +2,9 @@ package com.example.car_store.service.dto;
 
 import lombok.*;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @ToString
@@ -11,6 +14,8 @@ import java.math.BigDecimal;
 @Builder
 public class CarDto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private BigDecimal price;
 

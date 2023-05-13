@@ -1,6 +1,6 @@
 package com.example.car_store.mapper;
 
-import com.example.car_store.entity.cars.Car;
+import com.example.car_store.entity.cars.*;
 import com.example.car_store.service.dto.CarDto;
 import com.example.car_store.service.dto.ColorDto;
 import com.example.car_store.service.dto.EngineDto;
@@ -18,19 +18,25 @@ public class CarMapper {
     private final TransmissionMapper transmissionMapper;
     private final EngineMapper engineMapper;
     private final ColorMapper colorMapper;
+    private final ModelOptionMapper optionMapper;
 
     public Car toCarEntity(CarDto carDto) {
         if (carDto == null) {
             return null;
         }
-
+        Transmission transmission = transmissionMapper.transmissionToEntity(carDto.getCarTransmission());
+        Engine engine = engineMapper.toEngineEntity(carDto.getCarEngine());
+        Color color = colorMapper.toColorEntity(carDto.getCarColor());
+        ModelOption option = optionMapper.toEntity();
         Car.CarBuilder car = Car.builder();
 
-        car.id(carDto.getId());
         car.model(carDto.getModel());
         car.price(carDto.getPrice());
         car.availability(carDto.getAvailability());
-
+        car.carTransmission(transmission);
+        car.carEngine(engine);
+        car.carColor(color);
+        car.carOption(option);
 
         return car.build();
     }
@@ -44,8 +50,6 @@ public class CarMapper {
         EngineDto engineDto = engineMapper.toEngineDto(car.getCarEngine());
         ColorDto colorDto = colorMapper.toColorDto(car.getCarColor());
         CarDto.CarDtoBuilder carDto = CarDto.builder();
-
-        carDto.id(car.getId());
         carDto.price(car.getPrice());
         carDto.availability(car.getAvailability());
         carDto.model(car.getModel());

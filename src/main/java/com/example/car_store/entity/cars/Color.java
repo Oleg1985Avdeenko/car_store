@@ -16,14 +16,14 @@ import java.util.Set;
 public class Color {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column
     private Integer id;
 
     @Column
     private String colorName;
 
-    @OneToMany(mappedBy = "carColor", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "carColor", cascade = CascadeType.ALL)
     private Set<Car> selectedColors = new HashSet<>();
 
 }

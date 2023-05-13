@@ -8,7 +8,9 @@ import org.springframework.stereotype.Component;
 public class TransmissionMapper {
 
 
-    public Transmission transmissionToEntity(TransmissionDto transmissionDto) {
+    public Transmission transmissionToEntity(TransmissionDto transmissionDto)
+    {
+
         Transmission transmission = Transmission.builder()
                 .type(transmissionDto.getType())
                 .build();
