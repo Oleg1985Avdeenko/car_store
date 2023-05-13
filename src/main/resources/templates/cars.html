@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Cars</title>
 </head>
-<body>
+<body BGCOLOR="#D3D3D3">
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 
 <table border="1" align="center">
@@ -17,6 +17,7 @@
         <td>Engine volume</td>
         <td>Engine type</td>
         <td>Color</td>
+        <td>Options</td>
         <td></td>
     </tr>
     <tr th:each="car : ${cars}">
@@ -28,9 +29,31 @@
         <td th:text="${car.carEngine.getVolume}"></td>
         <td th:text="${car.carEngine.getType}"></td>
         <td th:text="${car.carColor.colorName}"></td>
+        <td>
+            <p><select name="${car.carOption.optionName}">
+                <option th:text="${car.carOption.optionName}"></option>
+                <optgroup label="Salon">
+                    <option disabled th:text="${car.carOption.salon}"></option>
+                </optgroup>
+                <optgroup label="Heated seats">
+                    <option disabled th:text="${car.carOption.heatedSeat}"></option>
+                </optgroup>
+                <optgroup label="Cruise control">
+                    <option disabled th:text="${car.carOption.cruiseControl}"></option>
+                </optgroup>
+                <optgroup label="Wheel control">
+                    <option disabled th:text="${car.carOption.steeringWheelControl}"></option>
+                </optgroup>
+                <optgroup label="Fog Light">
+                    <option disabled th:text="${car.carOption.fogLight}"></option>
+                </optgroup>
+            </select></p>
+        </td>
         <td sec:authorize="!isAuthenticated()"><a th:href="@{/users/new}">Add to order</a></td>
-        <td sec:authorize="hasAuthority('CLIENT')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Add to order</a></td>
-        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Update</a></td>
+        <td sec:authorize="hasAuthority('CLIENT')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Add to
+            order</a></td>
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Update</a>
+        </td>
 
     </tr>
 </table>

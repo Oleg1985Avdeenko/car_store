@@ -11,10 +11,14 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class UserMapper {
+public class UserMapper implements Mapper<User, UserDto> {
     private final PasswordEncoder passwordEncoder;
 
-    public User mapToEntity(UserDto userDto) {
+    @Override
+    public User toEntity(UserDto userDto) {
+        if (userDto == null) {
+            return null;
+        }
         User user = User.builder()
                 .login(userDto.getLogin())
                 .name(userDto.getName())
@@ -31,7 +35,11 @@ public class UserMapper {
         return user;
     }
 
-    public UserDto mapToDto(User user) {
+    @Override
+    public UserDto toDto(User user) {
+        if (user == null) {
+            return null;
+        }
         return UserDto.builder()
                 .login(user.getLogin())
                 .name(user.getName())

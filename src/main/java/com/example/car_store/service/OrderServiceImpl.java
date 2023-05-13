@@ -54,7 +54,7 @@ public class OrderServiceImpl implements OrderService {
         newCarList.addAll(getCollectCarById(carIdList));
         order.setSelectedCars(newCarList);
         orderRepository.save(order);
-        List<CarDto> dtoCarList = newCarList.stream().map(carMapper::toCarDto).collect(Collectors.toList());
+        List<CarDto> dtoCarList = newCarList.stream().map(carMapper::toDto).collect(Collectors.toList());
         return dtoCarList;
     }
 
@@ -73,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
         ClientOrder order = user.getClientOrder();
         order.setSelectedCars(carList);
         orderRepository.save(order);
-        List<CarDto> dtoCarList = carList.stream().map(carMapper::toCarDto).collect(Collectors.toList());
+        List<CarDto> dtoCarList = carList.stream().map(carMapper::toDto).collect(Collectors.toList());
         return dtoCarList;
     }
 

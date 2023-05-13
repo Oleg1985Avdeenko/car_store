@@ -26,17 +26,12 @@ public class CarController {
 
     private final CarService carService;
     private final CarMapper mapper1;
-    private final OrderRepository orderRepository;
+
 
     private  Random random = new Random();
     @GetMapping
     public String list(Model model) {
         List<CarDto> list = carService.getAll();
-        List<ClientOrder> clientOrders = orderRepository.findAll();
-        for (ClientOrder order : clientOrders) {
-            List<Car> carList = order.getSelectedCars();
-            list.removeAll(carList.stream().map(mapper1::toCarDto).collect(Collectors.toList()));
-        }
         model.addAttribute("cars", list);
         return "cars";
     }

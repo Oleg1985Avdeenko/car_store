@@ -31,5 +31,5 @@ public class CarDto {
 
     private TransmissionDto carTransmission;
 
-//    private OptionDto carOption;
+    private OptionDto carOption;
 }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>clientOrder</title>
 </head>
-<body>
+<body BGCOLOR="#D3D3D3">
 <div th:insert="~{fragments/menu :: #nav-menu}"></div>
 <h2>Order</h2>
 <h3>Sum order <b th:text="${clientOrder.sum}">1000</b></h3>
@@ -19,6 +19,7 @@
         <td>Engine volume</td>
         <td>Engine type</td>
         <td>Color</td>
+        <td>Options</td>
         <td>Sum</td>
         <td></td>
     </tr>
@@ -30,6 +31,26 @@
         <td th:text="${detail.carEngine.getVolume}"></td>
         <td th:text="${detail.carEngine.getType}"></td>
         <td th:text="${detail.carColor.colorName}"></td>
+        <td>
+            <p><select name="${car.carOption.optionName}">
+                <option th:text="${car.carOption.optionName}"></option>
+                <optgroup label="Salon">
+                    <option disabled th:text="${car.carOption.salon}"></option>
+                </optgroup>
+                <optgroup label="Heated seats">
+                    <option disabled th:text="${car.carOption.heatedSeat}"></option>
+                </optgroup>
+                <optgroup label="Cruise control">
+                    <option disabled th:text="${car.carOption.cruiseControl}"></option>
+                </optgroup>
+                <optgroup label="Wheel control">
+                    <option disabled th:text="${car.carOption.steeringWheelControl}"></option>
+                </optgroup>
+                <optgroup label="Fog Light">
+                    <option disabled th:text="${car.carOption.fogLight}"></option>
+                </optgroup>
+            </select></p>
+        </td>
         <td th:text="${detail.sum}"></td>
         <td><a href="#">Remove</a></td>
         <!--        <td><a th:href="@{'/clientOrder.orderDetails/{id}/clientOrder' (id=${car.id})}">Remove</a></td>-->

@@ -5,9 +5,13 @@ import com.example.car_store.service.dto.OptionDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ModelOptionMapper {
+public class ModelOptionMapper implements Mapper<ModelOption, OptionDto> {
 
-    public OptionDto toDto(ModelOption modelOption){
+    @Override
+    public OptionDto toDto(ModelOption modelOption) {
+        if (modelOption == null) {
+            return null;
+        }
         OptionDto optionDto = OptionDto.builder()
                 .cruiseControl(modelOption.getCruiseControl())
                 .fogLight(modelOption.getFogLight())
@@ -19,14 +23,18 @@ public class ModelOptionMapper {
         return optionDto;
     }
 
-    public ModelOption toEntity(){
+    @Override
+    public ModelOption toEntity(OptionDto optionDto) {
+        if (optionDto == null) {
+            return null;
+        }
         ModelOption modelOption = ModelOption.builder()
-                .optionName("rhn")
-                .cruiseControl(true)
-                .fogLight(true)
-                .heatedSeat(true)
-                .salon("moim")
-                .steeringWheelControl(true)
+                .optionName(optionDto.getOptionName())
+                .cruiseControl(optionDto.getCruiseControl())
+                .fogLight(optionDto.getFogLight())
+                .heatedSeat(optionDto.getHeatedSeat())
+                .salon(optionDto.getSalon())
+                .steeringWheelControl(optionDto.getSteeringWheelControl())
                 .build();
         return modelOption;
     }

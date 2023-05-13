@@ -1,6 +1,7 @@
 package com.example.car_store.service;
 
 import com.example.car_store.dao.CarRepository;
+import com.example.car_store.dao.OrderRepository;
 import com.example.car_store.dao.UserRepository;
 import com.example.car_store.entity.cars.Car;
 import com.example.car_store.entity.users.ClientOrder;
@@ -22,15 +23,21 @@ public class CarServiceImpl implements CarService {
 
     private final CarRepository carRepository;
     private final UserRepository userRepository;
-
+    private final OrderRepository orderRepository;
     private final OrderService orderService;
 
 
     @Override
     public List<CarDto> getAll() {
-        return carRepository.findAll().stream()
-                .map(mapper::toCarDto)
+        List<CarDto> list = carRepository.findAll().stream()
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
+        List<ClientOrder> clientOrders = orderRepository.findAll();
+        for (ClientOrder order : clientOrders) {
+            List<Car> carList = order.getSelectedCars();
+            list.removeAll(carList.stream().map(mapper::toDto).collect(Collectors.toList()));
+        }
+        return list;
     }
 
     @Override
@@ -47,18 +54,14 @@ public class CarServiceImpl implements CarService {
             userRepository.save(user);
         } else {
             orderService.addCar(order, Collections.singletonList(carId));
-            //
-//            carRepository.deleteById(carId);
             getAll();
-            //
         }
 
     }
 
     @Override
     public boolean save(CarDto carDto) {
-        Car car = mapper.toCarEntity(carDto);
-        System.out.println(car);
+        Car car = mapper.toEntity(carDto);
         carRepository.save(car);
         return true;
     }

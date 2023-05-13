@@ -5,15 +5,23 @@ import com.example.car_store.service.dto.ColorDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ColorMapper {
+public class ColorMapper implements Mapper<Color, ColorDto> {
 
-    public ColorDto toColorDto(Color color) {
+    @Override
+    public ColorDto toDto(Color color) {
+        if (color == null) {
+            return null;
+        }
         ColorDto colorDto = ColorDto.builder()
                 .colorName(color.getColorName()).build();
         return colorDto;
     }
 
-    public Color toColorEntity(ColorDto colorDto) {
+    @Override
+    public Color toEntity(ColorDto colorDto) {
+        if (colorDto == null) {
+            return null;
+        }
         Color color = Color.builder()
                 .colorName(colorDto.getColorName()).build();
         return color;

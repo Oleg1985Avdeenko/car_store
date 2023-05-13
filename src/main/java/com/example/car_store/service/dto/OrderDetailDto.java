@@ -1,9 +1,6 @@
 package com.example.car_store.service.dto;
 
-import com.example.car_store.entity.cars.Car;
-import com.example.car_store.entity.cars.Color;
-import com.example.car_store.entity.cars.Engine;
-import com.example.car_store.entity.cars.Transmission;
+import com.example.car_store.entity.cars.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +24,8 @@ public class OrderDetailDto {
     private Color carColor;
 
     private Transmission carTransmission;
+
+    private ModelOption modelOption;
     private double sum;
 
     public OrderDetailDto(Car car) {
@@ -36,6 +35,7 @@ public class OrderDetailDto {
         this.carEngine = car.getCarEngine();
         this.carColor = car.getCarColor();
         this.carTransmission = car.getCarTransmission();
+        this.modelOption = car.getCarOption();
         this.amount = new BigDecimal(1.0);
         this.sum = Double.valueOf(car.getPrice().toString());
     }

@@ -17,7 +17,7 @@ public class EngineServiceImpl implements EngineService {
     @Override
     public EngineDto findById(Integer id) {
         Engine engine = engineRepository.getById(id);
-        return mapper.toEngineDto(engine);
+        return mapper.toDto(engine);
     }
 
 

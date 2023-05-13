@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         if (!Objects.equals(userDto.getPassword(), userDto.getMatchingPassword())) {
             throw new RuntimeException("Password is not equals!");
         }
-        User user = mapper.mapToEntity(userDto);
+        User user = mapper.toEntity(userDto);
         userRepository.save(user);
         return true;
     }
@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getAll() {
         return userRepository.findAll().stream()
-                .map(mapper::mapToDto)
+                .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
 

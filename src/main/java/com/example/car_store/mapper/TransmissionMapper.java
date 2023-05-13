@@ -5,19 +5,24 @@ import com.example.car_store.service.dto.TransmissionDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class TransmissionMapper {
+public class TransmissionMapper implements Mapper<Transmission, TransmissionDto> {
 
-
-    public Transmission transmissionToEntity(TransmissionDto transmissionDto)
-    {
-
+    @Override
+    public Transmission toEntity(TransmissionDto transmissionDto) {
+        if (transmissionDto == null) {
+            return null;
+        }
         Transmission transmission = Transmission.builder()
                 .type(transmissionDto.getType())
                 .build();
         return transmission;
     }
 
-    TransmissionDto transmissionToDto(Transmission transmission) {
+    @Override
+    public TransmissionDto toDto(Transmission transmission) {
+        if (transmission == null) {
+            return null;
+        }
         TransmissionDto transmissionDto = TransmissionDto.builder()
                 .type(transmission.getType()).build();
         return transmissionDto;
