@@ -27,8 +27,6 @@ public class CarController {
     private final CarService carService;
     private final CarMapper mapper1;
 
-
-    private  Random random = new Random();
     @GetMapping
     public String list(Model model) {
         List<CarDto> list = carService.getAll();

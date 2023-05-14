@@ -33,7 +33,6 @@ public class OrderController {
         OrderDto orderDto = orderService.getUsersOrder(principal.getName());
         orderService.deleteCar(principal.getName(), id);
         model.addAttribute("clientOrder", orderDto);
-
         return "clientOrder";
     }
 }

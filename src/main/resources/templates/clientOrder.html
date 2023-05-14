@@ -32,22 +32,22 @@
         <td th:text="${detail.carEngine.getType}"></td>
         <td th:text="${detail.carColor.colorName}"></td>
         <td>
-            <p><select name="${car.carOption.optionName}">
-                <option th:text="${car.carOption.optionName}"></option>
+            <p><select name="${detail.modelOption.optionName}">
+                <option th:text="${detail.modelOption.optionName}"></option>
                 <optgroup label="Salon">
-                    <option disabled th:text="${car.carOption.salon}"></option>
+                    <option disabled th:text="${detail.modelOption.salon}"></option>
                 </optgroup>
                 <optgroup label="Heated seats">
-                    <option disabled th:text="${car.carOption.heatedSeat}"></option>
+                    <option disabled th:text="${detail.modelOption.heatedSeat}"></option>
                 </optgroup>
                 <optgroup label="Cruise control">
-                    <option disabled th:text="${car.carOption.cruiseControl}"></option>
+                    <option disabled th:text="${detail.modelOption.cruiseControl}"></option>
                 </optgroup>
                 <optgroup label="Wheel control">
-                    <option disabled th:text="${car.carOption.steeringWheelControl}"></option>
+                    <option disabled th:text="${detail.modelOption.steeringWheelControl}"></option>
                 </optgroup>
                 <optgroup label="Fog Light">
-                    <option disabled th:text="${car.carOption.fogLight}"></option>
+                    <option disabled th:text="${detail.modelOption.fogLight}"></option>
                 </optgroup>
             </select></p>
         </td>

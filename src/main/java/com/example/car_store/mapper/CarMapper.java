@@ -5,6 +5,9 @@ import com.example.car_store.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 @RequiredArgsConstructor
@@ -55,30 +58,30 @@ public class CarMapper implements Mapper<Car, CarDto> {
         carDto.carOption(optionDto);
         return carDto.build();
     }
-//
-//    public List<Car> toCarEntityList(List<CarDto> carDtoList) {
-//        if (carDtoList == null) {
-//            return null;
-//        }
-//
-//        List<Car> list = new ArrayList<Car>(carDtoList.size());
-//        for (CarDto carDto : carDtoList) {
-//            list.add(toEntity(carDto));
-//        }
-//
-//        return list;
-//    }
-//
-//    public List<CarDto> fromCarEntityList(List<Car> carList) {
-//        if (carList == null) {
-//            return null;
-//        }
-//
-//        List<CarDto> list = new ArrayList<CarDto>(carList.size());
-//        for (Car car : carList) {
-//            list.add(toDto(car));
-//        }
-//
-//        return list;
-//    }
+
+    public List<Car> toCarEntityList(List<CarDto> carDtoList) {
+        if (carDtoList == null) {
+            return null;
+        }
+
+        List<Car> list = new ArrayList<Car>(carDtoList.size());
+        for (CarDto carDto : carDtoList) {
+            list.add(toEntity(carDto));
+        }
+
+        return list;
+    }
+
+    public List<CarDto> fromCarEntityList(List<Car> carList) {
+        if (carList == null) {
+            return null;
+        }
+
+        List<CarDto> list = new ArrayList<CarDto>(carList.size());
+        for (Car car : carList) {
+            list.add(toDto(car));
+        }
+
+        return list;
+    }
 }

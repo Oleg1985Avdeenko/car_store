@@ -28,7 +28,6 @@ public class OrderServiceImpl implements OrderService {
     private final CarRepository carRepository;
     private final CarMapper carMapper;
 
-
     private final UserService userService;
 
 
@@ -62,13 +61,6 @@ public class OrderServiceImpl implements OrderService {
     public List<CarDto> deleteCar(String login, Integer carId) {
         User user = userService.findByLogin(login);
         List<Car> carList = user.getClientOrder().getSelectedCars();
-        System.out.println("++++++++++++++++++++===============");
-        System.out.println("++++++++++++++++++++===============");
-        System.out.println("++++++++++++++++++++===============");
-        System.out.println(carList);
-        System.out.println("++++++++++++++++++++===============");
-        System.out.println("++++++++++++++++++++===============");
-        System.out.println("++++++++++++++++++++===============");
         carList.remove(carId);
         ClientOrder order = user.getClientOrder();
         order.setSelectedCars(carList);
