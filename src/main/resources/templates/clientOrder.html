@@ -52,8 +52,8 @@
             </select></p>
         </td>
         <td th:text="${detail.sum}"></td>
-        <td><a href="#">Remove</a></td>
-        <!--        <td><a th:href="@{'/clientOrder.orderDetails/{id}/clientOrder' (id=${car.id})}">Remove</a></td>-->
+<!--        <td><a href="#">Remove</a></td>-->
+                <td><a th:href="@{'/clientOrder/{id}/clientOrder' (id=${detail.carId})}">Remove</a></td>
     </tr>
 </table>
 

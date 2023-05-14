@@ -61,7 +61,8 @@ public class OrderServiceImpl implements OrderService {
     public List<CarDto> deleteCar(String login, Integer carId) {
         User user = userService.findByLogin(login);
         List<Car> carList = user.getClientOrder().getSelectedCars();
-        carList.remove(carId);
+        Car car = carRepository.getOne(carId);
+        carList.remove(car);
         ClientOrder order = user.getClientOrder();
         order.setSelectedCars(carList);
         orderRepository.save(order);

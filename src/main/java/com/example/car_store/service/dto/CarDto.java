@@ -15,7 +15,6 @@ import java.math.BigDecimal;
 public class CarDto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private BigDecimal price;
 

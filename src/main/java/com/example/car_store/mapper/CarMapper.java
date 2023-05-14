@@ -27,7 +27,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         Color color = colorMapper.toEntity(carDto.getCarColor());
         ModelOption option = optionMapper.toEntity(carDto.getCarOption());
         Car.CarBuilder car = Car.builder();
-
+        car.id(carDto.getId());
         car.model(carDto.getModel());
         car.price(carDto.getPrice());
         car.availability(carDto.getAvailability());
@@ -49,6 +49,7 @@ public class CarMapper implements Mapper<Car, CarDto> {
         ColorDto colorDto = colorMapper.toDto(car.getCarColor());
         OptionDto optionDto = optionMapper.toDto(car.getCarOption());
         CarDto.CarDtoBuilder carDto = CarDto.builder();
+        carDto.id(car.getId());
         carDto.price(car.getPrice());
         carDto.availability(car.getAvailability());
         carDto.model(car.getModel());

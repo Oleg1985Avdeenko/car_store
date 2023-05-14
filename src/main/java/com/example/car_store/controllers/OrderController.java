@@ -28,11 +28,11 @@ public class OrderController {
         return "clientOrder";
     }
 
-    @PostMapping("/clientOrder")
+    @GetMapping(value = "/clientOrder/{id}/clientOrder")
     public String deleteFromOrder(Model model, Principal principal, @PathVariable Integer id) {
         OrderDto orderDto = orderService.getUsersOrder(principal.getName());
         orderService.deleteCar(principal.getName(), id);
         model.addAttribute("clientOrder", orderDto);
-        return "clientOrder";
+        return "redirect:/clientOrder";
     }
 }
