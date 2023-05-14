@@ -1,10 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!--<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org" lang="en">-->
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add car</title>
 </head>
-<body>
+<body BGCOLOR="#D3D3D3">
+<div th:insert="~{fragments/menu :: #nav-menu}"></div>
+<h1>Update Car</h1>
+
+<form th:action="@{/cars/{id}/update}" th:object="${car}" method="post">
+    <table border="1">
+        <tr>
+            <td>Id</td>
+            <td><input type="number" th:field="*{id}"></td>
+        </tr>
+        <tr>
+            <td>Model</td>
+            <td><input type="text" th:field="*{model}"></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><input type="text" th:field="*{price}"></td>
+        </tr>
+        <tr>
+            <td>Availability</td>
+            <td><input type="checkbox" th:field="*{availability}"></td>
+        </tr>
+        <tr>
+            <td>Transmission</td>
+            <td><input type="text" th:field="*{carTransmission.type}"></td>
+        </tr>
+        <tr>
+            <td>Engine volume</td>
+            <td><input type="text" th:field="*{carEngine.volume}"></td>
+        </tr>
+        <tr>
+            <td>Engine type</td>
+            <td><input type="text" th:field="*{carEngine.type}"></td>
+        </tr>
+        <td>Color</td>
+        <td><input type="text" th:field="*{carColor.colorName}"></td>
+        </tr>
+        </tr>
+        <td>Option name</td>
+        <td><input type="text" th:field="*{carOption.optionName}"></td>
+        </tr>
+        <td>Salon</td>
+        <td><input type="text" th:field="*{carOption.salon}"></td>
+        </tr>
+        <tr>
+            <td>Heated seats</td>
+            <td><input type="checkbox" th:field="*{carOption.heatedSeat}"></td>
+        </tr>
+        <tr>
+            <td>Cruise control</td>
+            <td><input type="checkbox" th:field="*{carOption.cruiseControl}"></td>
+        </tr>
+        <tr>
+            <td>Wheel control</td>
+            <td><input type="checkbox" th:field="*{carOption.steeringWheelControl}"></td>
+        </tr>
+        <tr>
+            <td>Fog Light</td>
+            <td><input type="checkbox" th:field="*{carOption.fogLight}"></td>
+        </tr>
+    </table>
+    <button type="submit">Save</button>
+</form>
 
 </body>
 </html>

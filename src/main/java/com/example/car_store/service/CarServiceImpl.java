@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,7 +57,6 @@ public class CarServiceImpl implements CarService {
             orderService.addCar(order, Collections.singletonList(carId));
             getAll();
         }
-
     }
 
     @Override
@@ -64,6 +64,60 @@ public class CarServiceImpl implements CarService {
         Car car = mapper.toEntity(carDto);
         carRepository.save(car);
         return true;
+    }
+
+    @Override
+    public CarDto findById(Integer id) {
+        Car car = carRepository.getById(id);
+        CarDto carDto = mapper.toDto(car);
+       return carDto;
+    }
+
+    @Override
+    public void updateCar(CarDto carDto) {
+        CarDto savedCar = findById(carDto.getId());
+
+        if (savedCar == null) {
+            throw new RuntimeException("Car not found by id " + carDto.getId());
+        }
+        boolean isChanged = false;
+        if (!Objects.equals(carDto.getModel(), savedCar.getModel())) {
+            savedCar.setModel(carDto.getModel());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getPrice(), savedCar.getPrice())) {
+            savedCar.setPrice(carDto.getPrice());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getAvailability(), savedCar.getAvailability())) {
+            savedCar.setAvailability(carDto.getAvailability());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getCarEngine(), savedCar.getCarEngine())) {
+            savedCar.setCarEngine(carDto.getCarEngine());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getCarColor(), savedCar.getCarColor())) {
+            savedCar.setCarColor(carDto.getCarColor());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getCarTransmission(), savedCar.getCarTransmission())) {
+            savedCar.setCarTransmission(carDto.getCarTransmission());
+            isChanged = true;
+        }
+        if (!Objects.equals(carDto.getCarOption(), savedCar.getCarOption())) {
+            savedCar.setCarOption(carDto.getCarOption());
+            isChanged = true;
+        }
+        if (isChanged) {
+            Car car = mapper.toEntity(savedCar);
+            carRepository.save(car);
+        }
+    }
+
+    @Override
+    public void deleteCar(Integer id) {
+        carRepository.deleteById(id);
     }
 
 

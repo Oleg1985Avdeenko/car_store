@@ -52,7 +52,8 @@
         <td sec:authorize="!isAuthenticated()"><a th:href="@{/users/new}">Add to order</a></td>
         <td sec:authorize="hasAuthority('CLIENT')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Add to
             order</a></td>
-        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/cars/{id}/clientOrder' (id=${car.id})}">Update</a>
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/cars/{id}/update' (id=${car.id})}">Update</a>
+        <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{'/cars/{id}/delete' (id=${car.id})}">Delete</a>
         </td>
 
     </tr>
