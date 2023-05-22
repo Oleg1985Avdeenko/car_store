@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.httpFirewall(new DefaultHttpFirewall());
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

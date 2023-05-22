@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="create_table_car" author="Oleg">
+        <createTable tableName="car">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="availability" type="bit"/>
+            <column name="model" type="varchar(255)"/>
+            <column name="price" type="decimal(38, 2)"/>
+            <column name="color_id" type="int">
+                <constraints foreignKeyName="color_id" references="color(id)"/>
+            </column>
+            <column name="engine_id" type="int">
+                <constraints foreignKeyName="engine_id" references="engine(id)"/>
+            </column>
+            <column name="model_option_id" type="int">
+                <constraints foreignKeyName="model_option_id" references="model_option(id)"/>
+            </column>
+            <column name="transmission_id" type="int">
+                <constraints foreignKeyName="transmission_id" references="transmission(id)"/>
+            </column>
+            <column name="order_id" type="int">
+                <constraints foreignKeyName="order_id" references="order(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="car"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="create_table_client_order" author="Oleg">
+        <createTable tableName="client_order">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="status" type="varchar(255)"/>
+            <column name="time_of_creation" type="datetime"/>
+            <column name="time_of_update" type="datetime"/>
+            <column name="user_id" type="int">
+                <constraints foreignKeyName="user_id" references="user(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="client_order"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_client_order_selected_car" author="Oleg">
+        <createTable tableName="client_order_selected_car">
+            <column name="client_order_id" type="int">
+                <constraints primaryKey="true" nullable="false"
+                             foreignKeyName="client_order_id"
+                             references="client_order(id)"/>
+            </column>
+            <column name="selected_cars_id" type="int">
+                <constraints primaryKey="true" nullable="false"
+                             foreignKeyName="selected_cars_id"
+                             references="selected_cars(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="client_order_selected_car"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_color" author="Oleg">
+        <createTable tableName="color">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="color_name" type="varchar(255)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="color"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_engine" author="Oleg">
+        <createTable tableName="engine">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)"/>
+            <column name="volume" type="float"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="engine"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_model_option" author="Oleg">
+        <createTable tableName="model_option">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cruise_control" type="bit"/>
+            <column name="fog_light" type="bit"/>
+            <column name="heated_seat" type="bit"/>
+            <column name="*option_name" type="varchar(255)"/>
+            <column name="salon" type="varchar(255)"/>
+            <column name="steering_wheel_control" type="bit"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="model_option"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_transmission" author="Oleg">
+        <createTable tableName="transmission">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="transmission"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="create_table_user" author="Oleg">
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cell_phone" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="login" type="varchar(288)"/>
+            <column name="name" type="varchar(288)"/>
+            <column name="password" type="varchar(288)"/>
+            <column name="role" type="varchar(288)"/>
+            <column name="surname" type="varchar(288)"/>
+            <column name="client_order_id" type="int">
+                <constraints foreignKeyName="client_order_id" references="client_order(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="user"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

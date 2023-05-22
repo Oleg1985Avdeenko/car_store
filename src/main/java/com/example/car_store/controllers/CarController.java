@@ -55,8 +55,6 @@ public class CarController {
 
     @PostMapping("/new")
     public String saveCar(CarDto carDto, Model model) {
-        System.out.println("==============================");
-        System.out.println(carDto);
         if (carService.save(carDto)) {
             return "redirect:/cars";
         } else {

@@ -49,6 +49,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByLogin(username);
+//        System.out.println("/////////////////////////////");
+//        System.out.println(username + "//loginname");
         if (user == null) {
             throw new UsernameNotFoundException("User not found with name: " + username);
         }

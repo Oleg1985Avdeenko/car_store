@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="insert_user" author="Oleg">
+        <insert tableName="user">
+            <column name="login">root</column>
+            <column name="password">$2a$10$VJZ21Qi9xsJp.hdSizsveewwiCNUIhjEeFsFl5xvjU4gGtNTFDXD6</column>
+            <column name="name">Oleg</column>
+            <column name="surname">Avdeenko</column>
+            <column name="cell_phone">445323315</column>
+            <column name="email">avdeenko-oleg@tut.by</column>
+            <column name="role">ADMIN</column>
+            <column name="client_order_id">null</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
