@@ -105,8 +105,8 @@
                 <version>4.19.0</version>
                 <configuration>
                     <propertyFile>liquibase.properties</propertyFile>
-                    <changeLogFile>changelog-master.xml</changeLogFile>
-                    <searchPath>\car_store\src\main\resources\liquibase\liquibase.properties</searchPath>
+                    <changeLogFile>20-05-2023-changelog.xml</changeLogFile>
+                    <searchPath>${basedir}/src/main/resources/liquibase</searchPath>
                 </configuration>
             </plugin>
             <plugin>

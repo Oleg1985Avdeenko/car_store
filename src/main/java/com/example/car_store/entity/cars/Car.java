@@ -57,7 +57,7 @@ public class Car {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "client_order_id")
     private ClientOrder selectedCar;
 
 }

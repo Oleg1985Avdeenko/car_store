@@ -40,5 +40,6 @@ public class User {
     private Role role;
 
     @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "client_order_id")
     private ClientOrder clientOrder;
 }

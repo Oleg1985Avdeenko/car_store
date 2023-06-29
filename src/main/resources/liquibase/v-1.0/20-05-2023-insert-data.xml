@@ -5,67 +5,6 @@
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
 
     <changeSet id="insert_car" author="Oleg">
-        <insert tableName="car">
-            <column name="availability">true</column>
-            <column name="model">CoolRay</column>
-            <column name="price">65875</column>
-            <column name="color_id">1</column>
-            <column name="engine_id">1</column>
-            <column name="model_option_id">1</column>
-            <column name="transmission_id">1</column>
-            <column name="order_id">null</column>
-        </insert>
-        <insert tableName="car">
-            <column name="availability">true</column>
-            <column name="model">CoolRay</column>
-            <column name="price">65875</column>
-            <column name="color_id">2</column>
-            <column name="engine_id">3</column>
-            <column name="model_option_id">1</column>
-            <column name="transmission_id">2</column>
-            <column name="order_id">null</column>
-        </insert>
-        <insert tableName="car">
-            <column name="availability">true</column>
-            <column name="model">Atlas</column>
-            <column name="price">75950</column>
-            <column name="color_id">2</column>
-            <column name="engine_id">3</column>
-            <column name="model_option_id">3</column>
-            <column name="transmission_id">3</column>
-            <column name="order_id">null</column>
-        </insert>
-        <insert tableName="car">
-            <column name="availability">false</column>
-            <column name="model">Atlas</column>
-            <column name="price">75950</column>
-            <column name="color_id">3</column>
-            <column name="engine_id">1</column>
-            <column name="model_option_id">2</column>
-            <column name="transmission_id">2</column>
-            <column name="order_id">null</column>
-        </insert>
-        <insert tableName="car">
-            <column name="availability">false</column>
-            <column name="model">Emgrand</column>
-            <column name="price">54200</column>
-            <column name="color_id">4</column>
-            <column name="engine_id">2</column>
-            <column name="model_option_id">4</column>
-            <column name="transmission_id">1</column>
-            <column name="order_id">null</column>
-        </insert>
-        <insert tableName="car">
-            <column name="availability">rtue</column>
-            <column name="model">Emgrand</column>
-            <column name="price">52600</column>
-            <column name="color_id">1</column>
-            <column name="engine_id">1</column>
-            <column name="model_option_id">4</column>
-            <column name="transmission_id">2</column>
-            <column name="order_id">null</column>
-        </insert>
-
         <insert tableName="color">
             <column name="id">1</column>
             <column name="color_name">white</column>
@@ -81,6 +20,56 @@
         <insert tableName="color">
             <column name="id">4</column>
             <column name="color_name">brown</column>
+        </insert>
+
+        <insert tableName="model_option">
+            <column name="id">1</column>
+            <column name="cruise_control" valueBoolean="true"></column>
+            <column name="fog_light" valueBoolean="true"></column>
+            <column name="heated_seat" valueBoolean="false"></column>
+            <column name="option_name">Comfort</column>
+            <column name="salon">textile</column>
+            <column name="steering_wheel_control" valueBoolean="false"></column>
+        </insert>
+        <insert tableName="model_option">
+            <column name="id">2</column>
+            <column name="cruise_control" valueBoolean="true"></column>
+            <column name="fog_light" valueBoolean="true"></column>
+            <column name="heated_seat" valueBoolean="true"></column>
+            <column name="option_name">Lux</column>
+            <column name="salon">textile</column>
+            <column name="steering_wheel_control" valueBoolean="true"></column>
+        </insert>
+        <insert tableName="model_option">
+            <column name="id">3</column>
+            <column name="cruise_control" valueBoolean="true"></column>
+            <column name="fog_light" valueBoolean="true"></column>
+            <column name="heated_seat" valueBoolean="true"></column>
+            <column name="option_name">Delux</column>
+            <column name="salon">leather</column>
+            <column name="steering_wheel_control" valueBoolean="true"></column>
+        </insert>
+        <insert tableName="model_option">
+            <column name="id">4</column>
+            <column name="cruise_control" valueBoolean="false"></column>
+            <column name="fog_light" valueBoolean="true"></column>
+            <column name="heated_seat" valueBoolean="false"></column>
+            <column name="option_name">Simple</column>
+            <column name="salon">textile</column>
+            <column name="steering_wheel_control" valueBoolean="false"></column>
+        </insert>
+
+        <insert tableName="transmission">
+            <column name="id">1</column>
+            <column name="type">5 MT</column>
+        </insert>
+        <insert tableName="transmission">
+            <column name="id">2</column>
+            <column name="type">CVT</column>
+        </insert>
+        <insert tableName="transmission">
+            <column name="id">3</column>
+            <column name="type">7 DCT</column>
         </insert>
 
         <insert tableName="engine">
@@ -99,54 +88,66 @@
             <column name="type">tdi 2.0</column>
         </insert>
 
-        <insert tableName="model_option">
-            <column name="id">1</column>
-            <column name="cruise_control">true</column>
-            <column name="fog_light">true</column>
-            <column name="heated_seat">false</column>
-            <column name="option_name">Comfort</column>
-            <column name="salon">textile</column>
-            <column name="steering_wheel_control">false</column>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="true"></column>
+            <column name="model">CoolRay</column>
+            <column name="price">65875</column>
+            <column name="color_id">1</column>
+            <column name="engine_id">1</column>
+            <column name="model_option_id">1</column>
+            <column name="transmission_id">1</column>
+            <column name="client_order_id">null</column>
         </insert>
-        <insert tableName="model_option">
-            <column name="id">2</column>
-            <column name="cruise_control">true</column>
-            <column name="fog_light">true</column>
-            <column name="heated_seat">true</column>
-            <column name="option_name">Lux</column>
-            <column name="salon">textile</column>
-            <column name="steering_wheel_control">true</column>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="true"></column>
+            <column name="model">CoolRay</column>
+            <column name="price">65875</column>
+            <column name="color_id">2</column>
+            <column name="engine_id">3</column>
+            <column name="model_option_id">1</column>
+            <column name="transmission_id">2</column>
+            <column name="client_order_id">null</column>
         </insert>
-        <insert tableName="model_option">
-            <column name="id">3</column>
-            <column name="cruise_control">true</column>
-            <column name="fog_light">true</column>
-            <column name="heated_seat">true</column>
-            <column name="option_name">Delux</column>
-            <column name="salon">leather</column>
-            <column name="steering_wheel_control">true</column>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="true"></column>
+            <column name="model">Atlas</column>
+            <column name="price">75950</column>
+            <column name="color_id">2</column>
+            <column name="engine_id">3</column>
+            <column name="model_option_id">3</column>
+            <column name="transmission_id">3</column>
+            <column name="client_order_id">null</column>
         </insert>
-        <insert tableName="model_option">
-            <column name="id">4</column>
-            <column name="cruise_control">false</column>
-            <column name="fog_light">true</column>
-            <column name="heated_seat">false</column>
-            <column name="option_name">Simple</column>
-            <column name="salon">textile</column>
-            <column name="steering_wheel_control">false</column>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="false"></column>
+            <column name="model">Atlas</column>
+            <column name="price">75950</column>
+            <column name="color_id">3</column>
+            <column name="engine_id">1</column>
+            <column name="model_option_id">2</column>
+            <column name="transmission_id">2</column>
+            <column name="client_order_id">null</column>
+        </insert>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="false"></column>
+            <column name="model">Emgrand</column>
+            <column name="price">54200</column>
+            <column name="color_id">4</column>
+            <column name="engine_id">2</column>
+            <column name="model_option_id">4</column>
+            <column name="transmission_id">1</column>
+            <column name="client_order_id">null</column>
+        </insert>
+        <insert tableName="car">
+            <column name="availability" valueBoolean="true"></column>
+            <column name="model">Emgrand</column>
+            <column name="price">52600</column>
+            <column name="color_id">1</column>
+            <column name="engine_id">1</column>
+            <column name="model_option_id">4</column>
+            <column name="transmission_id">2</column>
+            <column name="client_order_id">null</column>
         </insert>
 
-        <insert tableName="transmission">
-            <column name="id">1</column>
-            <column name="type">5 MT</column>
-        </insert>
-        <insert tableName="transmission">
-            <column name="id">2</column>
-            <column name="type">CVT</column>
-        </insert>
-        <insert tableName="transmission">
-            <column name="id">3</column>
-            <column name="type">7 DCT</column>
-        </insert>
     </changeSet>
 </databaseChangeLog>
